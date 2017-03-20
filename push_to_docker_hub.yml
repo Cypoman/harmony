@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Pull an image from DockerHub
+      docker_image:
+        name: slorber/harmony
+
+    - name: Tag and push to DockerHub
+      docker_image:
+        name: slorber/harmony
+        repository: slorber/harmony
+        tag: latest
+        push: yes
